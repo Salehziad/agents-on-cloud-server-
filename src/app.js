@@ -17,8 +17,8 @@ const app = express();
 // middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json());
-app.use(express.json({limit: "30mb",extended:true}));
-app.use(express.urlencoded({limit: "30mb",extended:true}));
+app.use(bodyParser.json({limit: '100mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
 app.use(expressValidator());
 app.use(cors());
 
