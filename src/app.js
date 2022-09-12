@@ -11,6 +11,8 @@ const notfound = require("./error-handlers/404");
 const authRoute = require("./routes/auth");
 const itemRoutes = require("./routes/item");
 const commentsRoutes = require("./routes/comments");
+const favouritesRoutes = require("./routes/favourites");
+const cartRoutes = require("./routes/cart");
 
 const app = express();
 
@@ -25,9 +27,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // routes
+app.use("/api/v1/users", authRoute);
 app.use('/items',itemRoutes)
 app.use('/comments',commentsRoutes)
-app.use("/api/v1/users", authRoute);
+app.use('/favourites',favouritesRoutes)
+app.use('/cart',cartRoutes)
 app.use(internalServerError);
 app.use("*", notfound);
 
